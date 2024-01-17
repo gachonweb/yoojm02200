@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock_Sissors_Paper</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 100px;
+    }
+
+    button {
+      font-size: 50px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Rock Sissors Paper</h1>
+
+  <button onclick="userChoice('가위')">가위</button>
+  <br>
+  <button onclick="userChoice('바위')">바위</button>
+  <br>
+  <button onclick="userChoice('보')">보</button>
+  <br>
+
+  <p id="result"></p>
+
+  <script>
+    function userChoice(user) {
+      const choices = ['가위', '바위', '보'];
+      const computer = choices[Math.floor(Math.random() * choices.length)];
+
+      const result = determineWinner(user, computer);
+
+      document.getElementById('result').innerHTML = `사용자: ${user}<br>컴퓨터: ${computer}<br>${result}`;
+    }
+
+    function determineWinner(user, computer) {
+      if (user === computer) {
+        return '무승부!';
+      } else if (
+        (user === '가위' && computer === '보') ||
+        (user === '바위' && computer === '가위') ||
+        (user === '보' && computer === '바위')
+      ) {
+        return '사용자 승리!';
+      } else {
+        return '컴퓨터 승리!';
+      }
+    }
+  </script>
+
+</body>
+</html>

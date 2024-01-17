@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuGuDan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #000fff;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #000fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>GuGuDan</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Dan</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody id="gugudanTableBody"></tbody>
+  </table>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      generateMultiplicationTable();
+    });
+
+    function generateMultiplicationTable() {
+      const tableBody = document.getElementById('gugudanTableBody');
+      let tableHTML = '';
+
+      for (let i = 1; i <= 9; i++) {
+        tableHTML += `<tr>
+                        <td>${i}단</td>
+                        <td>${generateRow(i)}</td>
+                      </tr>`;
+      }
+
+      tableBody.innerHTML = tableHTML;
+    }
+
+    function generateRow(multiplier) {
+      let rowHTML = '';
+
+      for (let i = 1; i <= 9; i++) {
+        rowHTML += `${multiplier} x ${i} = ${multiplier * i}<br>`;
+      }
+
+      return rowHTML;
+    }
+  </script>
+
+</body>
+</html>
